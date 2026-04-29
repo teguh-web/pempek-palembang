@@ -1,0 +1,452 @@
+/* ============================
+   RESET & BASE
+   ============================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  background-color: #ffffff;
+  color: #2c2c2c;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ============================
+   NAVBAR
+   ============================ */
+.navbar {
+  top: 0;
+  padding: 18px 48px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  left: 0;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  background-color: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  transition: background-color 0.1s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.1s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.1s cubic-bezier(0.22, 1, 0.36, 1), backdrop-filter 0.1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.navbar.scrolled {
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(4px);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar--hidden {
+  transform: translateY(-100%);
+}
+
+.navbar__logo {
+  display: flex;
+  align-items: center;
+}
+
+.navbar__logo-img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.25));
+  transition: transform 0.3s ease;
+}
+
+.navbar__logo-img:hover {
+  transform: scale(1.05);
+}
+
+/* When navbar scrolled, keep logo visible */
+.navbar--scrolled 
+.navbar__logo-img {
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.15));
+}
+
+.navbar__menu {
+  list-style: none;
+  display: flex;
+  gap: 32px;
+}
+
+.navbar__menu li a {
+  text-decoration: none;
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  transition: opacity 0.2s;
+}
+
+.navbar__menu li a:hover {
+  opacity: 0.75;
+}
+
+.navbar__menu li a span {
+  font-size: 10px;
+  margin-left: 3px;
+}
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+  min-width: 160px;
+  display: none;
+  border-radius: 6px;
+}
+
+.dropdown-menu li {
+  padding: 8px 16px;
+}
+
+.dropdown-menu li a {
+  color: black;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.dropdown-menu li:hover {
+  background: #f2f2f2;
+}
+
+/* ============================
+   HERO SPLIT LAYOUT
+   ============================ */
+.hero-split {
+  display: flex;
+  min-height: 100vh;
+  padding-top: 52px; /* height of navbar */
+}
+
+.hero-left {
+  flex: 0 0 68%;
+  background-color: #000000;
+  min-height: calc(100vh - 52px);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-image-placeholder {
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+}
+
+.hero-right {
+  flex: 0 0 32%;
+  padding: 60px 48px 60px 48px;
+  display: flex;
+  align-items: flex-start;
+  background-color: #ffffff;
+}
+
+.story-content {
+  max-width: 400px;
+}
+
+.story-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 28px;
+  line-height: 1.2;
+}
+
+.story-text {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.75;
+  margin-bottom: 16px;
+  font-weight: 300;
+}
+
+.story-text strong,
+.story-text b {
+  font-weight: 700;
+  color: #2c2c2c;
+}
+
+/* ============================
+   MILESTONE SECTION
+   ============================ */
+.milestone-section {
+  background-color: #ffffff;
+  padding: 80px 0 100px;
+  text-align: center;
+}
+
+.milestone-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+}
+
+.milestone-subtitle {
+  font-size: 13px;
+  color: #999;
+  margin-bottom: 56px;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+}
+
+/* Timeline list */
+.milestone-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  align-items: center;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Each milestone row */
+.milestone-item {
+  display: grid;
+  grid-template-columns: 1fr 28px 1fr;
+  align-items: center;
+  width: 100%;
+  gap: 0;
+}
+
+/* Left side card */
+.milestone-left {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 0;
+}
+
+/* Right side card */
+.milestone-right {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 0;
+}
+
+/* Dot column (center) */
+.milestone-dot-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #c8102e;
+  border: 2px solid #c8102e;
+  z-index: 2;
+  flex-shrink: 0;
+  margin: 16px 0;
+}
+
+.vline {
+  width: 1px;
+  flex: 1;
+  min-height: 40px;
+  background-color: #ddd;
+}
+
+/* Cards */
+.milestone-card {
+  padding: 16px 24px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  min-height: 52px;
+}
+
+.milestone-card.yellow {
+  background-color: #fef08a;
+  color: #2c2c2c;
+  min-width: 280px;
+  justify-content: center;
+}
+
+.milestone-card.small-year {
+  background-color: #fef08a;
+  color: #444;
+  min-width: 80px;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.milestone-card.wide {
+  min-width: 360px;
+  justify-content: flex-start;
+  padding-left: 28px;
+}
+
+.milestone-card.right-align {
+  justify-content: center;
+}
+
+.milestone-city {
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: #2c2c2c;
+}
+
+/* ============================
+   FOOTER
+   ============================ */
+.footer {
+  background-color: #2c2c2c;
+  color: #ccc;
+  padding: 28px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  font-size: 11px;
+  color: #aaa;
+  letter-spacing: 0.03em;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
+.footer-social {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.social-icon {
+  color: #bbb;
+  transition: color 0.2s, transform 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+.social-icon:hover {
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.footer-copy {
+  font-size: 10px;
+  color: #777;
+  letter-spacing: 0.03em;
+  width: 100%;
+  text-align: center;
+  margin-top: 8px;
+}
+
+/* ============================
+   SCROLL ANIMATIONS
+   ============================ */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================
+   RESPONSIVE
+   ============================ */
+@media (max-width: 1024px) {
+  .hero-split {
+    flex-direction: column;
+  }
+
+  .hero-left {
+    flex: none;
+    height: 320px;
+    min-height: unset;
+  }
+
+  .hero-right {
+    flex: none;
+    padding: 40px 32px;
+  }
+
+  .milestone-card.yellow {
+    min-width: 200px;
+  }
+
+  .milestone-card.wide {
+    min-width: 240px;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav-links {
+    display: none;
+  }
+
+  .milestone-item {
+    grid-template-columns: 1fr 20px 1fr;
+  }
+
+  .milestone-card.yellow,
+  .milestone-card.wide {
+    min-width: 120px;
+    padding: 12px 10px;
+    font-size: 11px;
+  }
+
+  .milestone-card.small-year {
+    min-width: 60px;
+    font-size: 10px;
+    padding: 12px 8px;
+  }
+
+  .footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-links {
+    justify-content: center;
+  }
+}
