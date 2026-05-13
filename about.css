@@ -136,22 +136,32 @@ a {
    ============================ */
 .hero-split {
   display: flex;
-  min-height: 100vh;
-  padding-top: 52px; /* height of navbar */
+  min-height: 50vh;
+  padding-top: 5.5%; /* height of navbar */
 }
 
 .hero-left {
-  flex: 0 0 68%;
+  flex: 0 0 60%;
   background-color: #000000;
-  min-height: calc(100vh - 52px);
+  min-height: calc(60vh - 32px);
   position: relative;
   overflow: hidden;
+  border-radius: 0 30px 30px 0;
 }
 
 .hero-image-placeholder {
   width: 100%;
   height: 100%;
   background-color: #000;
+}
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .hero-right {
